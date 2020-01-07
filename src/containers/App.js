@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import CardList from './CardList';
-// import { robots } from './robots';
-import SearchBox from './SearchBox';
+import CardList from '../components/CardList';
+import SearchBox from '../components/SearchBox';
+import Scroll from '../components/Scroll';
 import './App.css';
-import api_url from './API';
+import api_url from '../API';
 
 class App extends Component {
     constructor() {
@@ -32,20 +32,23 @@ class App extends Component {
 
     // Renders the app component; inside we have props for SearchBox and CardList; searchChange is a prop for SearchBox
     render() {
-        const filteredRobots = this.state.robots.filter(robot => {
-            return robot.name.toLowerCase().includes(this.state.searchField.toLowerCase());
+        const { robots, searchField } = this.state;
+        const filteredRobots = robots.filter(robot => {
+            return robot.name.toLowerCase().includes(searchField.toLowerCase());
         });
-        if(this.state.robots.length === 0){
-            return <h2 className='loading'>Loading...</h2>
-        }else {
-            return (
+        return !robots.length ?
+            <h2 className='loading'>Loading...</h2>
+            :
+            (
                 <div className='tc'>
                     <h1 className='f1'>RoboBook</h1>
                     <SearchBox searchChange={this.onSearchChange} />
-                    <CardList robots={filteredRobots} />
+                    <Scroll>
+                        <CardList robots={filteredRobots} />
+                    </Scroll>
                 </div>
             );
-        }
+
     };
 };
 

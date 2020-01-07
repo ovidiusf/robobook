@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'jaguarjcbookitalic';
-    src: url('./jagwi___-webfont.woff2') format('woff2'),
-         url('./jagwi___-webfont.woff') format('woff');
+    src: url('../jagwi___-webfont.woff2') format('woff2'),
+         url('../jagwi___-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
