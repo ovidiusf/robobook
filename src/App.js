@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import CardList from './CardList';
-import { robots } from './robots';
+// import { robots } from './robots';
 import SearchBox from './SearchBox';
 import './App.css';
+import api_url from './API';
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            robots: robots,
+            robots: [],
             searchField: ''
         };
+    };
+
+    async componentDidMount() {
+        const response = await fetch(api_url);
+        const users = await response.json();
+        this.setState({ robots: users });
     };
 
     // use arrow functions for selfmade functions
@@ -28,13 +35,17 @@ class App extends Component {
         const filteredRobots = this.state.robots.filter(robot => {
             return robot.name.toLowerCase().includes(this.state.searchField.toLowerCase());
         });
-        return (
-            <div className='tc'>
-                <h1 className='f1'>RoboBook</h1>
-                <SearchBox searchChange={this.onSearchChange} />
-                <CardList robots={filteredRobots} />
-            </div>
-        );
+        if(this.state.robots.length === 0){
+            return <h2 className='loading'>Loading...</h2>
+        }else {
+            return (
+                <div className='tc'>
+                    <h1 className='f1'>RoboBook</h1>
+                    <SearchBox searchChange={this.onSearchChange} />
+                    <CardList robots={filteredRobots} />
+                </div>
+            );
+        }
     };
 };
 
