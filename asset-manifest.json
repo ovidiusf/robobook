@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/robobook/static/css/main.4260caf0.chunk.css",
+    "main.js": "/robobook/static/js/main.542f3027.chunk.js",
+    "main.js.map": "/robobook/static/js/main.542f3027.chunk.js.map",
+    "runtime-main.js": "/robobook/static/js/runtime-main.3f7ea2c0.js",
+    "runtime-main.js.map": "/robobook/static/js/runtime-main.3f7ea2c0.js.map",
+    "static/css/2.eb45ad44.chunk.css": "/robobook/static/css/2.eb45ad44.chunk.css",
+    "static/js/2.e8ab5529.chunk.js": "/robobook/static/js/2.e8ab5529.chunk.js",
+    "static/js/2.e8ab5529.chunk.js.map": "/robobook/static/js/2.e8ab5529.chunk.js.map",
+    "index.html": "/robobook/index.html",
+    "precache-manifest.4c93d53250e31072314ab7285cd61720.js": "/robobook/precache-manifest.4c93d53250e31072314ab7285cd61720.js",
+    "service-worker.js": "/robobook/service-worker.js",
+    "static/css/2.eb45ad44.chunk.css.map": "/robobook/static/css/2.eb45ad44.chunk.css.map",
+    "static/css/main.4260caf0.chunk.css.map": "/robobook/static/css/main.4260caf0.chunk.css.map",
+    "static/js/2.e8ab5529.chunk.js.LICENSE": "/robobook/static/js/2.e8ab5529.chunk.js.LICENSE",
+    "static/media/App.css": "/robobook/static/media/jagwi___-webfont.9d0b58ba.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3f7ea2c0.js",
+    "static/css/2.eb45ad44.chunk.css",
+    "static/js/2.e8ab5529.chunk.js",
+    "static/css/main.4260caf0.chunk.css",
+    "static/js/main.542f3027.chunk.js"
+  ]
+}
