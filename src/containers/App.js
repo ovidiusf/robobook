@@ -16,6 +16,7 @@ class App extends Component {
     };
 
     async componentDidMount() {
+        // console.log(this.props.store.getState());
         const response = await fetch(api_url);
         const users = await response.json();
         this.setState({ robots: users });

@@ -1,8 +1,8 @@
 import { CHANGE_SEARCH_FIELD } from "./constants";
 
-// setting the initialstate as a starting point
-const initialState = () => {
-    searchField: '';
+// setting the initialstate object as a starting point
+const initialState = {
+    searchField: ''
 };
 
 // REDUCER with default parameters
