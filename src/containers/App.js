@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css';
-import api_url from '../API';
+import API_URL from '../API';
 import { setSearchField } from '../actions';
 
 const mapStateToProps = (state) => {
@@ -20,46 +20,37 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      robots: []
-    };
-  }
+const App = ({ searchField, onSearchChange }) => {
+  const [robots, setRobots] = useState([]);
 
-  async componentDidMount() {
-    const response = await fetch(api_url);
-    const users = await response.json();
-    this.setState({ robots: users });
-  }
+  // retrieve the data
+  useEffect(() => {
+    async function fetchData(url) {
+      const response = await fetch(url);
+      const data = await response.json();
+      setRobots(data);
+    }
+    fetchData(API_URL);
+  }, []);
 
-  // use arrow functions for selfmade functions
-  //constructor and render come with react and can use the older syntax
-  // if using the same syntax, the this. will call the input field, not the App
-  // hence not allowing us to access this.state
+  // filter the robots
+  const filteredRobots = robots.filter((robot) => {
+    return robot.name.toLowerCase().includes(searchField.toLowerCase());
+  });
 
-  // Renders the app component; inside we have props for SearchBox and CardList; searchChange is a prop for SearchBox
-  render() {
-    const { robots } = this.state;
-    const { searchField, onSearchChange } = this.props;
-    const filteredRobots = robots.filter((robot) => {
-      return robot.name.toLowerCase().includes(searchField.toLowerCase());
-    });
-    return !robots.length ? (
-      <h2 className='loading'>Loading...</h2>
-    ) : (
-      <div className='tc'>
-        <h1 className='f1'>RoboBook</h1>
-        <SearchBox searchChange={onSearchChange} />
-        <Scroll>
-          <ErrorBoundary>
-            <CardList robots={filteredRobots} />
-          </ErrorBoundary>
-        </Scroll>
-      </div>
-    );
-  }
-}
+  return !robots.length ? (
+    <h2 className='loading'>Loading...</h2>
+  ) : (
+    <div className='tc'>
+      <h1 className='f1'>RoboBook</h1>
+      <SearchBox searchChange={onSearchChange} />
+      <Scroll>
+        <ErrorBoundary>
+          <CardList robots={filteredRobots} />
+        </ErrorBoundary>
+      </Scroll>
+    </div>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

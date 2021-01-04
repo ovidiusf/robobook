@@ -1,4 +1,4 @@
 // API that generates fake users
-const api_url = 'https://jsonplaceholder.typicode.com/users';
+const API_URL = 'https://jsonplaceholder.typicode.com/users';
 
-export default api_url;
+export default API_URL;
